@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head Section -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Resume & CV Builder</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<!-- End Head Section -->
+
+<!-- Start Body Section -->
+<body class="bg-background text-text min-h-screen flex flex-col items-center justify-center p-4 transition-colors duration-500">
+    
+    <!-- Start Success Card -->
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-8 md:p-12 max-w-md w-full text-center animate-fade-in border border-gray-100 dark:border-gray-700 relative overflow-hidden">
+        
+        <!-- Decorative Background Element -->
+        <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-secondary"></div>
+
+        <!-- Icon -->
+        <div class="mb-8 relative">
+            <div class="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto animate-bounce-slow">
+                <i class="fas fa-check text-4xl text-green-500"></i>
+            </div>
+            <!-- Confetti-like decoration -->
+            <div class="absolute top-0 right-1/4 text-yellow-400 text-xl animate-pulse"><i class="fas fa-star"></i></div>
+            <div class="absolute bottom-0 left-1/4 text-blue-400 text-lg animate-pulse" style="animation-delay: 0.5s"><i class="fas fa-circle"></i></div>
+        </div>
+
+        <!-- Text Content -->
+        <h1 class="text-3xl font-bold mb-4 gradient-text">Success!</h1>
+        <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Your document has been successfully generated and saved. Good luck with your job application!
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="space-y-4">
+            <a href="resume_builder.html" class="block w-full py-3.5 px-6 bg-primary hover:bg-opacity-90 text-white rounded-xl font-bold shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 rainbow-pulse">
+                <i class="fas fa-file-alt"></i> Create Another Resume
+            </a>
+            
+            <a href="cv_builder.html" class="block w-full py-3.5 px-6 bg-white border-2 border-secondary text-secondary hover:bg-secondary hover:text-white rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 rainbow-pulse">
+                <i class="fas fa-id-card"></i> Create Another CV
+            </a>
+
+            <a href="index.html" class="block w-full py-3 px-4 text-gray-500 hover:text-primary transition-colors duration-300 text-sm font-medium mt-6">
+                <i class="fas fa-arrow-left mr-1"></i> Back to Home
+            </a>
+        </div>
+    </div>
+    <!-- End Success Card -->
+
+    <!-- Start Scripts -->
+    <script src="../js/theme.js"></script>
+    <!-- End Scripts -->
+</body>
+<!-- End Body Section -->
+</html>

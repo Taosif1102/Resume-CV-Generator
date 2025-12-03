@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head Section -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Builder</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <style>
+        .editor-panel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .editor-panel::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        .editor-panel::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+    </style>
+</head>
+<!-- End Head Section -->
+
+<!-- Start Body Section -->
+<body class="lg:overflow-hidden lg:h-screen bg-background text-text transition-colors duration-500">
+    <div class="app-container flex flex-col lg:flex-row min-h-screen lg:h-screen">
+        <!-- Start Editor Panel -->
+        <div class="editor-panel w-full lg:w-[450px] shadow-xl z-10 overflow-y-auto border-r border-gray-200 flex flex-col">
+            <div class="editor-header sticky top-0 backdrop-blur-sm p-6 border-b border-gray-100 flex justify-between items-center z-20">
+                <div>
+                    <h2 class="text-2xl font-bold">CV Editor</h2>
+                    <a href="index.html" class="text-sm opacity-70 hover:opacity-100 transition-opacity"><i class="fas fa-arrow-left mr-1"></i> Back to Home</a>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="toggleThemeSettings()" class="bg-gray-100 hover:bg-gray-200 text-text px-4 py-2.5 rounded-lg font-medium transition-all flex items-center gap-2">
+                        <i class="fas fa-cog"></i> Save Progress
+                    </button>
+                    <button onclick="handlePrint()" class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-lg font-medium shadow-lg shadow-primary/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                        <i class="fas fa-save"></i> Save PDF
+                    </button>
+                </div>
+            </div>
+            
+            <form id="cv-form" class="p-6 space-y-8">
+                <!-- Start Personal Details Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Personal Details</legend>
+                    <div class="space-y-4 mt-2">
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Profile Photo</label>
+                            <input type="file" id="input-photo" accept="image/*" class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-all cursor-pointer">
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Full Name</label>
+                            <input type="text" id="input-name" placeholder="John A. Doe" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Job Title</label>
+                            <input type="text" id="input-title" placeholder="Software Engineer" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Phone</label>
+                                <input type="text" id="input-phone" placeholder="+1 555-123-4567" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                            </div>
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Location</label>
+                                <input type="text" id="input-location" placeholder="New York, USA" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Email</label>
+                            <input type="text" id="input-email" placeholder="john.doe@email.com" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">LinkedIn/Website</label>
+                            <input type="text" id="input-linkedin" placeholder="linkedin.com/in/johndoe" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none transition-all">
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- End Personal Details Section -->
+
+                <!-- Start Summary Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Summary</legend>
+                    <div class="form-group mt-2">
+                        <textarea id="input-summary" rows="4" placeholder="Highly motivated Software Engineer..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"></textarea>
+                    </div>
+                </fieldset>
+                <!-- End Summary Section -->
+
+                <!-- Start Experience Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Experience (Latest)</legend>
+                    <div class="space-y-4 mt-2">
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Job Title</label>
+                            <input type="text" id="input-job-title" placeholder="Senior Software Engineer" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Company</label>
+                                <input type="text" id="input-job-company" placeholder="Tech Solutions, Inc." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Date</label>
+                                <input type="text" id="input-job-date" placeholder="2022 - Present" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Description</label>
+                            <textarea id="input-job-desc" rows="4" placeholder="Developed and maintained..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- End Experience Section -->
+
+                <!-- Start Education Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Education (Latest)</legend>
+                    <div class="space-y-4 mt-2">
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Degree</label>
+                            <input type="text" id="input-edu-degree" placeholder="M.S. in Computer Science" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">School/University</label>
+                                <input type="text" id="input-edu-school" placeholder="State University" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                            <div class="form-group">
+                                <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Date</label>
+                                <input type="text" id="input-edu-date" placeholder="2019" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="block text-xs font-semibold uppercase mb-1 opacity-70">Details</label>
+                            <textarea id="input-edu-desc" rows="2" placeholder="Relevant coursework..." class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <!-- End Education Section -->
+
+                <!-- Start Skills Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Skills</legend>
+                    <div class="form-group mt-2">
+                        <label class="block text-xs font-semibold uppercase mb-1 opacity-70">List skills (one per line)</label>
+                        <textarea id="input-skills" rows="5" placeholder="Python, Java&#10;SQL, AWS&#10;Communication&#10;Problem-solving" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"></textarea>
+                    </div>
+                </fieldset>
+                <!-- End Skills Section -->
+
+                <!-- Start Languages Section -->
+                <fieldset class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors">
+                    <legend class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded">Languages</legend>
+                    <div class="form-group mt-2">
+                        <label class="block text-xs font-semibold uppercase mb-1 opacity-70">List languages (one per line)</label>
+                        <textarea id="input-languages" rows="3" placeholder="English (Fluent)&#10;Spanish (Conversational)" class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"></textarea>
+                    </div>
+                </fieldset>
+                <!-- End Languages Section -->
+            </form>
+        </div>
+        <!-- End Editor Panel -->
+
+        <!-- Start Preview Panel -->
+        <div class="preview-panel flex-1 p-10 overflow-y-auto flex justify-center items-start bg-gray-50">
+            <div class="cv-preview bg-white shadow-2xl w-full max-w-[210mm] min-h-[297mm] flex text-gray-800" id="cv-preview">
+                <!-- Left Column (Dark) -->
+                <div class="cv-left-col w-[35%] bg-primary text-white p-8 flex flex-col items-center text-center">
+                    <div class="profile-photo-container w-[150px] h-[150px] rounded-full overflow-hidden mb-6 border-4 border-white/20 flex justify-center items-center bg-gray-600 relative">
+                        <span id="photo-placeholder" class="text-white/50 text-sm">Photo</span>
+                        <img id="preview-photo" class="w-full h-full object-cover absolute top-0 left-0" src="" alt="Profile Photo" style="display: none;">
+                    </div>
+                    
+                    <div class="left-section w-full mb-8 text-left">
+                        <div class="left-title text-lg uppercase border-b border-white/30 pb-1 mb-4 tracking-wider font-semibold">Contact</div>
+                        <div class="contact-item mb-3 text-sm flex items-center gap-3">
+                            <i class="fas fa-phone w-5 text-center"></i>
+                            <span id="preview-phone">+1 555-123-4567</span>
+                        </div>
+                        <div class="contact-item mb-3 text-sm flex items-center gap-3">
+                            <i class="fas fa-envelope w-5 text-center"></i>
+                            <span id="preview-email" class="break-all">john.doe@email.com</span>
+                        </div>
+                        <div class="contact-item mb-3 text-sm flex items-center gap-3">
+                            <i class="fab fa-linkedin w-5 text-center"></i>
+                            <span id="preview-linkedin" class="break-all">linkedin.com/in/johndoe</span>
+                        </div>
+                        <div class="contact-item mb-3 text-sm flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt w-5 text-center"></i>
+                            <span id="preview-location">New York, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="left-section w-full mb-8 text-left">
+                        <div class="left-title text-lg uppercase border-b border-white/30 pb-1 mb-4 tracking-wider font-semibold">Skills</div>
+                        <ul class="skill-list list-none p-0" id="preview-skills">
+                            <li class="skill-item mb-2 text-sm">Python, Java, SQL</li>
+                            <li class="skill-item mb-2 text-sm">AWS, Docker, Git</li>
+                            <li class="skill-item mb-2 text-sm">Communication</li>
+                            <li class="skill-item mb-2 text-sm">Problem-solving</li>
+                        </ul>
+                    </div>
+
+                    <div class="left-section w-full mb-8 text-left">
+                        <div class="left-title text-lg uppercase border-b border-white/30 pb-1 mb-4 tracking-wider font-semibold">Languages</div>
+                        <ul class="lang-list list-none p-0" id="preview-languages">
+                            <li class="lang-item mb-2 text-sm">English (Fluent)</li>
+                            <li class="lang-item mb-2 text-sm">Spanish (Conversational)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Right Column (Light) -->
+                <div class="cv-right-col w-[65%] bg-white p-10 text-gray-800">
+                    <div class="right-section mb-10">
+                        <h1 class="header-name text-4xl font-bold text-primary mb-0 leading-tight uppercase" id="preview-name">JOHN A. DOE</h1>
+                        <h2 class="header-title text-xl text-gray-500 mt-1 mb-6 font-normal" id="preview-title">Software Engineer</h2>
+                    </div>
+
+                    <div class="right-section mb-8">
+                        <div class="right-title text-base font-bold uppercase text-gray-800 mb-4 tracking-wider border-b-2 border-gray-100 pb-1">Summary</div>
+                        <p class="summary-text text-sm leading-relaxed text-gray-600 text-justify" id="preview-summary">
+                            Highly motivated Software Engineer with 3+ years of developing and deploying scalable web applications. Proven ability to work in agile environments, contribute to all phases of the software lifecycle. Seeking to use my technical expertise in a challenging new role.
+                        </p>
+                    </div>
+
+                    <div class="right-section mb-8">
+                        <div class="right-title text-base font-bold uppercase text-gray-800 mb-4 tracking-wider border-b-2 border-gray-100 pb-1">Experience</div>
+                        <div id="preview-experience">
+                            <div class="job-item mb-6">
+                                <div class="job-title font-bold text-base text-gray-800">Senior Software Engineer</div>
+                                <div class="job-company italic text-gray-500 text-sm mb-1">Tech Solutions, Inc.</div>
+                                <div class="job-date text-xs text-gray-400 mb-2">2022 - Present</div>
+                                <div class="job-desc text-sm leading-relaxed text-gray-600">
+                                    • Developed and maintained microservices-based e-commerce platform<br>
+                                    • Implemented CI/CD pipelines reducing deployment frequency by 50%<br>
+                                    • Mentored junior developers
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="right-section mb-8">
+                        <div class="right-title text-base font-bold uppercase text-gray-800 mb-4 tracking-wider border-b-2 border-gray-100 pb-1">Education</div>
+                        <div id="preview-education">
+                            <div class="edu-item mb-6">
+                                <div class="edu-degree font-bold text-base text-gray-800">M.S. in Computer Science</div>
+                                <div class="edu-school italic text-gray-500 text-sm mb-1">State University</div>
+                                <div class="edu-date text-xs text-gray-400 mb-2">2019</div>
+                                <div class="job-desc text-sm leading-relaxed text-gray-600">Relevant coursework: Machine Learning, Cloud Computing</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Preview Panel -->
+    </div>
+    <!-- Start Scripts -->
+    <script src="../js/cv_builder.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        function handlePrint() {
+            window.print();
+        }
+
+        window.onafterprint = function() {
+            window.location.href = 'thanks.html';
+        };
+    </script>
+    <!-- End Scripts -->
+</body>
+<!-- End Body Section -->
+</html>

@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Start Head Section -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Builder and CV Builder</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      /* Custom scrollbar for editor */
+      .editor-panel::-webkit-scrollbar {
+        width: 8px;
+      }
+      .editor-panel::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      .editor-panel::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+      }
+      .editor-panel::-webkit-scrollbar-thumb:hover {
+        background: #a8a8a8;
+      }
+    </style>
+    <link rel="stylesheet" href="../css/resume_builder.css" />
+    <script src="../js/theme-loader.js"></script>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/print.css" />
+  </head>
+  <!-- End Head Section -->
+
+  <!-- Start Body Section -->
+  <body
+    class="lg:overflow-hidden lg:h-screen bg-background text-text transition-colors duration-500"
+  >
+    <div
+      class="app-container flex flex-col lg:flex-row min-h-screen lg:h-screen"
+    >
+      <!-- Start Editor Panel -->
+      <div
+        class="editor-panel w-full lg:w-[450px] shadow-xl z-10 overflow-y-auto border-r border-gray-200 flex flex-col"
+      >
+        <div
+          class="editor-header sticky top-0 backdrop-blur-sm p-6 border-b border-gray-100 flex justify-between items-center z-20"
+        >
+          <div>
+            <h2 class="text-2xl font-bold">Resume Editor</h2>
+            <a
+              href="index.html"
+              class="text-sm opacity-70 hover:opacity-100 transition-opacity"
+              ><i class="fas fa-arrow-left mr-1"></i> Back to Home</a
+            >
+          </div>
+          <div class="flex gap-2">
+            <button
+              onclick="toggleThemeSettings()"
+              class="bg-gray-100 hover:bg-gray-200 text-text px-4 py-2.5 rounded-lg font-medium transition-all flex items-center gap-2"
+            >
+              <i class="fas fa-cog"></i> Save Progress
+            </button>
+            <button
+              onclick="handlePrint()"
+              class="bg-primary hover:bg-secondary text-white px-5 py-2.5 rounded-lg font-medium shadow-lg shadow-primary/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2"
+            >
+              <i class="fas fa-save"></i> Save PDF
+            </button>
+          </div>
+        </div>
+
+        <form id="resume-form" class="p-6 space-y-8">
+          <!-- Start Personal Information Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Personal Information
+            </legend>
+            <div class="space-y-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Profile Photo</label
+                >
+                <input
+                  type="file"
+                  id="input-photo"
+                  accept="image/*"
+                  class="block w-full text-sm file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary/10 file:text-primary hover:file:bg-primary/20 transition-all cursor-pointer"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="input-name"
+                  placeholder="Your Name"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >C/O</label
+                >
+                <input
+                  type="text"
+                  id="input-co"
+                  placeholder="Care of..."
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="space-y-2">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  id="input-addr1"
+                  placeholder="Address Line 1"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all mb-2"
+                />
+                <input
+                  type="text"
+                  id="input-addr2"
+                  placeholder="Address Line 2"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all mb-2"
+                />
+                <input
+                  type="text"
+                  id="input-addr3"
+                  placeholder="Address Line 3"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Mobile</label
+                >
+                <input
+                  type="text"
+                  id="input-mobile"
+                  placeholder="+8801000000000"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Email</label
+                >
+                <input
+                  type="text"
+                  id="input-email"
+                  placeholder="example@gmail.com"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <!-- End Personal Information Section -->
+
+          <!-- Start Career Objective Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Career Objective
+            </legend>
+            <textarea
+              id="input-objective"
+              rows="4"
+              class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all mt-2"
+            >
+Seeking a challenging position where I can utilize my potential, adaptability, and skills to innovate and further enhance my knowledge and creativity.</textarea
+            >
+          </fieldset>
+          <!-- End Career Objective Section -->
+
+          <!-- Start Academic Details - Diploma Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Academic Details - Diploma
+            </legend>
+            <div class="space-y-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Institute Name</label
+                >
+                <input
+                  type="text"
+                  id="input-diploma-inst"
+                  placeholder="Bangladesh Polytechnic Institute"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >Board</label
+                  >
+                  <input
+                    type="text"
+                    id="input-diploma-board"
+                    placeholder="BTEB"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >Passing Year</label
+                  >
+                  <input
+                    type="text"
+                    id="input-diploma-year"
+                    placeholder="8th Semester (Running)"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Subject</label
+                >
+                <input
+                  type="text"
+                  id="input-diploma-subj"
+                  placeholder="Computer Science and Technology"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <!-- End Academic Details - Diploma Section -->
+
+          <!-- Start Academic Details - SSC Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Academic Details - SSC
+            </legend>
+            <div class="space-y-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >School Name</label
+                >
+                <input
+                  type="text"
+                  id="input-ssc-school"
+                  placeholder="High School, Dhaka"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >Board</label
+                  >
+                  <input
+                    type="text"
+                    id="input-ssc-board"
+                    placeholder="Dhaka"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >Group</label
+                  >
+                  <input
+                    type="text"
+                    id="input-ssc-group"
+                    placeholder="Science"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >Passing Year</label
+                  >
+                  <input
+                    type="text"
+                    id="input-ssc-year"
+                    placeholder="2021"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                    >GPA</label
+                  >
+                  <input
+                    type="text"
+                    id="input-ssc-gpa"
+                    placeholder="3.78 (Out of 5.0)"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                  />
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <!-- End Academic Details - SSC Section -->
+
+          <!-- Start Computer Literacy Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Computer Literacy
+            </legend>
+            <div class="space-y-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Applications</label
+                >
+                <input
+                  type="text"
+                  id="input-comp-apps"
+                  value="MS Word, MS Excel, MS PowerPoint, Email, and Internet"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Other</label
+                >
+                <input
+                  type="text"
+                  id="input-comp-other"
+                  value="Web Browsing, etc."
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Programming</label
+                >
+                <input
+                  type="text"
+                  id="input-comp-prog"
+                  placeholder="HTML, CSS, JavaScript, Python, C, C++, Java, etc."
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <!-- End Computer Literacy Section -->
+
+          <!-- Start Language Proficiency Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Language Proficiency
+            </legend>
+            <div class="space-y-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Bengali</label
+                >
+                <input
+                  type="text"
+                  id="input-lang-bengali"
+                  value="Mother tongue."
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >English</label
+                >
+                <input
+                  type="text"
+                  id="input-lang-english"
+                  value="Good reading, writing, speaking, and listening skills."
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+          </fieldset>
+          <!-- End Language Proficiency Section -->
+
+          <!-- Start Key Qualities Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Key Qualities
+            </legend>
+            <div class="form-group mt-2">
+              <label
+                class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                >Qualities (One per line)</label
+              >
+              <textarea
+                id="input-qualities"
+                rows="6"
+                placeholder="Skilled in goal setting, planning, and motivating teams to achieve targets. Capable of generating innovative ideas. Enjoy working under pressure and eager to learn. Good and cooperative in group work. Highly punctual."
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              >
+Skilled in goal setting, planning, and motivating teams to achieve targets.Capable of generating innovative ideas. Enjoy working under pressure and eager to learn. Good and cooperative in group work. Highly punctual.</textarea
+              >
+            </div>
+          </fieldset>
+          <!-- End Key Qualities Section -->
+
+          <!-- Start Personal Details Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Personal Details
+            </legend>
+            <div class="grid grid-cols-2 gap-4 mt-2">
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Father's Name</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-father"
+                  value="Md. "
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Mother's Name</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-mother"
+                  value="Mst. "
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Date of Birth</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-dob"
+                  value="01-02-2005"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Gender</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-gender"
+                  value="Male"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Marital Status</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-marital"
+                  value="Unmarried"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Religion</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-religion"
+                  value="Islam"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Nationality</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-nationality"
+                  value="Bangladeshi"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Blood Group</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-blood"
+                  value="A+ (Positive)"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >Height</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-height"
+                  value="5 Feet 6 Inch"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                  >National ID No</label
+                >
+                <input
+                  type="text"
+                  id="input-pd-nid"
+                  value=""
+                  placeholder="1234567890"
+                  class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                />
+              </div>
+            </div>
+            <div class="form-group mt-4">
+              <label
+                class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                >Permanent Address</label
+              >
+              <textarea
+                id="input-pd-perm-addr"
+                placeholder="Vill: r, a, P.O: i -6251, P.S: a, Dist: Dhaka"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              ></textarea>
+            </div>
+          </fieldset>
+          <!-- End Personal Details Section -->
+
+          <!-- Start Declaration Section -->
+          <fieldset
+            class="border border-gray-200 rounded-xl p-5 relative group hover:border-secondary transition-colors"
+          >
+            <legend
+              class="text-sm font-bold text-primary px-2 uppercase tracking-wider rounded"
+            >
+              Declaration & Signature
+            </legend>
+            <div class="form-group mt-2">
+              <textarea
+                id="input-declaration"
+                rows="3"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              >
+I do hereby declare that all the information given above is true and correct to the best of my knowledge and belief.</textarea
+              >
+            </div>
+            <div class="form-group mt-4">
+              <label
+                class="block text-xs font-semibold uppercase mb-1 opacity-70"
+                >Date</label
+              >
+              <input
+                type="text"
+                id="input-date"
+                value="20/09/2024"
+                class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              />
+            </div>
+          </fieldset>
+          <!-- End Declaration Section -->
+        </form>
+      </div>
+      <!-- End Editor Panel -->
+
+      <!-- Start Preview Panel -->
+      <div
+        class="preview-panel flex-1 p-10 overflow-y-auto flex justify-center items-start bg-gray-50"
+      >
+        <div
+          class="resume-container bg-white shadow-2xl w-full max-w-[210mm] min-h-[297mm] p-10 text-gray-800"
+          id="resume-preview"
+        >
+          <!-- Header -->
+          <div
+            class="flex justify-between items-start mb-8 border-b-2 border-gray-800 pb-6"
+          >
+            <div class="flex-1">
+              <h1
+                class="text-4xl font-bold tracking-widest mb-2 uppercase text-gray-900"
+              >
+                RESUME
+              </h1>
+              <div class="text-sm font-bold mt-4">OF</div>
+              <h2
+                class="text-2xl font-bold text-gray-900 uppercase mt-1"
+                id="preview-name"
+              >
+                Your Name
+              </h2>
+
+              <div class="mt-4 text-sm space-y-1">
+                <div>
+                  <span class="font-bold">Address:</span> C/O:
+                  <span id="preview-co">Care of...</span>
+                </div>
+                <div>
+                  Vill: <span id="preview-addr1">Address Line 1</span>, P.O:
+                  <span id="preview-addr2">Address Line 2</span>
+                </div>
+                <div>
+                  P.S: <span id="preview-addr3">Address Line 3</span>, Dist:
+                  Dhaka
+                </div>
+                <div>
+                  <span class="font-bold">Mobile:</span>
+                  <span id="preview-mobile">+8801000000000</span>
+                </div>
+                <div>
+                  <span class="font-bold">Email:</span>
+                  <span id="preview-email">example@gmail.com</span>
+                </div>
+              </div>
+            </div>
+            <div
+              class="w-[140px] h-[160px] border border-gray-300 bg-gray-100 flex justify-center items-center overflow-hidden"
+            >
+              <span
+                id="photo-placeholder"
+                class="text-gray-400 text-xs text-center p-2"
+                >Passport Size Photo</span
+              >
+              <img
+                id="preview-photo"
+                class="w-full h-full object-cover"
+                src=""
+                alt="Profile Photo"
+                style="display: none"
+              />
+            </div>
+          </div>
+
+          <!-- Career Objective -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Career Objective
+            </h3>
+            <p
+              class="text-sm text-justify leading-relaxed"
+              id="preview-objective"
+            >
+              Seeking a challenging position where I can utilize my potential,
+              adaptability, and skills to innovate and further enhance my
+              knowledge and creativity.
+            </p>
+          </div>
+
+          <!-- Academic Details -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Academic Details
+            </h3>
+
+            <!-- Diploma -->
+            <div class="mb-4">
+              <div class="font-bold text-sm underline mb-1">
+                Diploma in Engineering:
+              </div>
+              <table class="w-full text-sm border-collapse">
+                <tr>
+                  <td class="w-1/3 font-semibold">Institute Name</td>
+                  <td class="w-2/3">
+                    :
+                    <span id="preview-diploma-inst"
+                      >Bangladesh Polytechnic Institute</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Board</td>
+                  <td>: <span id="preview-diploma-board">BTEB</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Department</td>
+                  <td>
+                    :
+                    <span id="preview-diploma-subj"
+                      >Computer Science and Technology</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Passing Year</td>
+                  <td>
+                    :
+                    <span id="preview-diploma-year"
+                      >8th Semester (Running)</span
+                    >
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- SSC -->
+            <div>
+              <div class="font-bold text-sm underline mb-1">
+                Secondary School Certificate (SSC):
+              </div>
+              <table class="w-full text-sm border-collapse">
+                <tr>
+                  <td class="w-1/3 font-semibold">School Name</td>
+                  <td class="w-2/3">
+                    : <span id="preview-ssc-school">High School, Dhaka</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Board</td>
+                  <td>: <span id="preview-ssc-board">Dhaka</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Group</td>
+                  <td>: <span id="preview-ssc-group">Science</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">Passing Year</td>
+                  <td>: <span id="preview-ssc-year">2021</span></td>
+                </tr>
+                <tr>
+                  <td class="font-semibold">GPA</td>
+                  <td>: <span id="preview-ssc-gpa">3.78 (Out of 5.0)</span></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <!-- Computer Literacy -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Computer Literacy
+            </h3>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              <li>
+                <span class="font-semibold">Applications:</span>
+                <span id="preview-comp-apps"
+                  >MS Word, MS Excel, MS PowerPoint, Email, and Internet</span
+                >
+              </li>
+              <li>
+                <span class="font-semibold">Programming:</span>
+                <span id="preview-comp-prog"
+                  >HTML, CSS, JavaScript, Python, C, C++, Java, etc.</span
+                >
+              </li>
+              <li>
+                <span class="font-semibold">Other:</span>
+                <span id="preview-comp-other">Web Browsing, etc.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Language Proficiency -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Language Proficiency
+            </h3>
+            <ul class="list-disc list-inside text-sm space-y-1">
+              <li>
+                <span class="font-semibold">Bengali:</span>
+                <span id="preview-lang-bengali">Mother tongue.</span>
+              </li>
+              <li>
+                <span class="font-semibold">English:</span>
+                <span id="preview-lang-english"
+                  >Good reading, writing, speaking, and listening skills.</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Key Qualities -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Key Qualities
+            </h3>
+            <ul
+              class="list-disc list-inside text-sm space-y-1"
+              id="preview-qualities"
+            >
+              <li>
+                Skilled in goal setting, planning, and motivating teams to
+                achieve targets.
+              </li>
+              <li>Capable of generating innovative ideas.</li>
+              <li>Enjoy working under pressure and eager to learn.</li>
+              <li>Good and cooperative in group work.</li>
+              <li>Highly punctual.</li>
+            </ul>
+          </div>
+
+          <!-- Personal Details -->
+          <div class="mb-6">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Personal Details
+            </h3>
+            <table class="w-full text-sm border-collapse">
+              <tr>
+                <td class="w-1/3 font-semibold">Name</td>
+                <td class="w-2/3">
+                  : <span id="preview-pd-name">Your Name</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Father's Name</td>
+                <td>: <span id="preview-pd-father">Md. </span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Mother's Name</td>
+                <td>: <span id="preview-pd-mother">Mst. </span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Date of Birth</td>
+                <td>: <span id="preview-pd-dob">01-02-2005</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Gender</td>
+                <td>: <span id="preview-pd-gender">Male</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Marital Status</td>
+                <td>: <span id="preview-pd-marital">Unmarried</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Religion</td>
+                <td>: <span id="preview-pd-religion">Islam</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Nationality</td>
+                <td>: <span id="preview-pd-nationality">Bangladeshi</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Blood Group</td>
+                <td>: <span id="preview-pd-blood">A+ (Positive)</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Height</td>
+                <td>: <span id="preview-pd-height">5 Feet 6 Inch</span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold">National ID No</td>
+                <td>: <span id="preview-pd-nid"></span></td>
+              </tr>
+              <tr>
+                <td class="font-semibold align-top">Permanent Address</td>
+                <td>
+                  :
+                  <span id="preview-pd-perm-addr"
+                    >Vill: r, a, P.O: i -6251, P.S: a, Dist: Dhaka</span
+                  >
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- Declaration -->
+          <div class="mb-8">
+            <h3
+              class="bg-gray-200 text-gray-900 font-bold px-2 py-1 uppercase text-sm mb-3 border-l-4 border-gray-800"
+            >
+              Declaration
+            </h3>
+            <p
+              class="text-sm text-justify leading-relaxed"
+              id="preview-declaration"
+            >
+              I do hereby declare that all the information given above is true
+              and correct to the best of my knowledge and belief.
+            </p>
+          </div>
+
+          <!-- Signature -->
+          <div class="flex justify-between items-end mt-16 px-4">
+            <div class="text-center">
+              <div class="border-t border-gray-800 w-40 mx-auto mb-1"></div>
+              <div class="font-bold text-sm" id="preview-date">20/09/2024</div>
+              <div class="text-xs">Date</div>
+            </div>
+            <div class="text-center">
+              <div class="border-t border-gray-800 w-40 mx-auto mb-1"></div>
+              <div class="font-bold text-sm" id="preview-sig-name">
+                Your Name
+              </div>
+              <div class="text-xs">Signature</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Preview Panel -->
+    </div>
+    <!-- Start Scripts -->
+    <script src="../js/resume_builder.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+      function handlePrint() {
+        window.print();
+      }
+
+      window.onafterprint = function () {
+        window.location.href = "thanks.html";
+      };
+    </script>
+    <!-- End Scripts -->
+  </body>
+  <!-- End Body Section -->
+</html>

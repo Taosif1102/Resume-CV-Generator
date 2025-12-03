@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head Section -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume & CV Builder - Create Professional Resumes Online</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <script src="../js/theme-loader.js"></script>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<!-- End Head Section -->
+
+<!-- Start Body Section -->
+<body class="bg-background text-text min-h-screen flex flex-col transition-colors duration-500">
+    
+    <!-- Start Navbar -->
+    <nav class="w-full p-6 flex justify-between items-center max-w-7xl mx-auto animate-fade-in">
+        <div class="text-2xl font-bold text-primary flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
+                <i class="fas fa-file-signature"></i> ResumeBuilder & CV Builder
+            </a>
+        </div>
+        <div class="hidden md:flex gap-6">
+            <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+            <a href="index.html#features" class="hover:text-primary transition-colors">Features</a>
+            <a href="about.html" class="hover:text-primary transition-colors">About</a>
+        </div>
+        <button onclick="toggleThemeSettings()" class="p-2 rounded-full hover:bg-black/5 transition-colors">
+            <i class="fas fa-palette text-xl"></i>
+        </button>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Main Content -->
+    <main class="flex-grow flex flex-col items-center justify-center w-full">
+
+    <!-- Start Templates Section -->
+    <section id="templates" class="w-full py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div>
+                <h2 class="text-3xl font-bold text-center mb-4"><span class="gradient-text">Choose Your Template</span></h2>
+                <p class="text-center text-text opacity-70 mb-16 max-w-2xl mx-auto">Select a professional template to get started. All templates are free to use and fully customizable.</p>
+            </div>
+            
+            <!-- Resume Templates -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8 flex items-center gap-3 reveal-on-scroll">
+                    <span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm"><i class="fas fa-file-alt"></i></span>
+                    Resume Templates
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Template 1 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-100">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <!-- Placeholder for Template Preview -->
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-file-invoice text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">Modern Clean</span>
+                            </div>
+                            <!-- Overlay -->
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="resume_builder.html" class="use-btn px-6 py-3 bg-primary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">Modern Clean</h4>
+                            <p class="text-sm opacity-60">Best for corporate jobs</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-200">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-file-contract text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">Professional</span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="resume_builder.html" class="use-btn px-6 py-3 bg-primary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">Professional</h4>
+                            <p class="text-sm opacity-60">Classic layout for all industries</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-300">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-file-signature text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">Creative</span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="resume_builder.html" class="use-btn px-6 py-3 bg-primary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">Creative</h4>
+                            <p class="text-sm opacity-60">Stand out with unique style</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CV Templates -->
+            <div>
+                <h3 class="text-2xl font-bold mb-8 flex items-center gap-3 reveal-on-scroll">
+                    <span class="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary text-sm"><i class="fas fa-id-card"></i></span>
+                    CV Templates
+                </h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Template 1 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-100">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-graduation-cap text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">Academic</span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="cv_builder.html" class="use-btn px-6 py-3 bg-secondary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">Academic</h4>
+                            <p class="text-sm opacity-60">Detailed layout for researchers</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 2 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-200">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-briefcase text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">Executive</span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="cv_builder.html" class="use-btn px-6 py-3 bg-secondary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">Executive</h4>
+                            <p class="text-sm opacity-60">For senior management roles</p>
+                        </div>
+                    </div>
+
+                    <!-- Template 3 -->
+                    <div class="template-card group relative bg-panel border border-border rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 reveal-on-scroll delay-300">
+                        <div class="card-image-container aspect-[210/297] bg-gray-100 relative overflow-hidden">
+                            <div class="absolute inset-0 flex flex-col items-center justify-center text-gray-400 bg-white">
+                                <i class="placeholder-icon fas fa-globe text-4xl mb-2 opacity-50"></i>
+                                <span class="text-sm font-medium">International</span>
+                            </div>
+                            <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                <a href="cv_builder.html" class="use-btn px-6 py-3 bg-secondary text-white rounded-lg font-bold">Use Template</a>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-border">
+                            <h4 class="font-bold text-lg">International</h4>
+                            <p class="text-sm opacity-60">Standard EU/International format</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Templates Section -->
+
+    <!-- Start Footer -->
+    <footer class="w-full py-8 text-center opacity-60 text-sm border-t border-border mt-auto">
+        <p>&copy; 2025 Resume & CV Builder. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/animations.js"></script>
+    <!-- End Scripts -->
+</body>
+<!-- End Body Section -->
+</html>

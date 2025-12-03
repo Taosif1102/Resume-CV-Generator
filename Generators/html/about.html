@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Start Head Section -->
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Resume & CV Builder</title>
+    <link rel="stylesheet" href="../css/output.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+    <script src="../js/theme-loader.js"></script>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/animations.css" />
+    <link rel="stylesheet" href="../css/about.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+    </style>
+</head>
+<!-- End Head Section -->
+
+<!-- Start Body Section -->
+<body class="bg-background text-text min-h-screen flex flex-col transition-colors duration-500 relative">
+    
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Start Navbar -->
+    <nav class="w-full p-6 flex justify-between items-center max-w-7xl mx-auto animate-fade-in z-50 relative">
+        <div class="text-2xl font-bold text-primary flex items-center gap-2">
+            <a href="index.html" class="flex items-center gap-2">
+                <i class="fas fa-file-signature"></i> ResumeBuilder & CV Builder
+            </a>
+        </div>
+        <div class="hidden md:flex gap-6">
+            <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+            <a href="index.html#features" class="hover:text-primary transition-colors">Features</a>
+            <a href="templates.html" class="hover:text-primary transition-colors">Templates</a>
+            <a href="about.html" class="text-primary font-bold">About</a>
+        </div>
+        <button onclick="toggleThemeSettings()" class="p-2 rounded-full hover:bg-black/5 transition-colors">
+            <i class="fas fa-palette text-xl"></i>
+        </button>
+    </nav>
+    <!-- End Navbar -->
+
+    <!-- Start Main Content -->
+    <main class="flex-grow w-full z-10 relative">
+
+        <!-- Hero Section -->
+        <section class="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 relative">
+            <div class="max-w-4xl mx-auto space-y-8">
+                <h1 class="text-6xl md:text-8xl font-black tracking-tight leading-none">
+                    Empowering Your <br/>
+                    <span class="gradient-text">Career Journey</span>
+                </h1>
+                <p class="text-xl md:text-2xl opacity-80 max-w-2xl mx-auto animate-fade-in delay-200">
+                    We believe everyone deserves a professional resume that stands out. Our mission is to make that possible for free.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-2xl text-center reveal-left">
+                    <div class="text-5xl font-bold text-primary mb-2">
+                        <span class="counter-value" data-target="100">0</span>+
+                    </div>
+                    <div class="text-lg opacity-70">Resumes Created</div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center reveal-on-scroll delay-100">
+                    <div class="text-5xl font-bold text-secondary mb-2">
+                        <span class="counter-value" data-target="10">0</span>+
+                    </div>
+                    <div class="text-lg opacity-70">Templates Available</div>
+                </div>
+                <div class="glass-card p-8 rounded-2xl text-center reveal-right">
+                    <div class="text-5xl font-bold text-pink-500 mb-2">
+                        <span class="counter-value" data-target="100">0</span>%
+                    </div>
+                    <div class="text-lg opacity-70">Free to Use</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="py-20 px-6">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-16 items-center">
+                    <div class="reveal-left">
+                        <h2 class="text-4xl font-bold mb-6">Why We Built This</h2>
+                        <p class="text-lg opacity-80 mb-6 leading-relaxed">
+                            Job hunting is stressful enough without having to worry about formatting margins or fighting with word processors. We created this tool to let you focus on what matters: your content and your story.
+                        </p>
+                        <p class="text-lg opacity-80 leading-relaxed">
+                            Whether you're a student applying for your first internship or an executive looking for your next challenge, our templates are designed to help you shine.
+                        </p>
+                    </div>
+                    <div class="reveal-right">
+                        <div class="glass-card p-8 rounded-3xl tilt-card">
+                            <i class="fas fa-rocket text-6xl text-primary mb-6"></i>
+                            <h3 class="text-2xl font-bold mb-4">Our Vision</h3>
+                            <p class="opacity-70">
+                                To become the world's most accessible and user-friendly career development platform, helping millions of people land their dream jobs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team/Story Section -->
+        <section class="py-20 px-6 mb-20">
+            <div class="max-w-4xl mx-auto text-center reveal-on-scroll">
+                <h2 class="text-4xl font-bold mb-12">Join Our Community</h2>
+                <div class="glass-card p-10 rounded-3xl">
+                    <p class="text-xl mb-8 opacity-90">
+                        We are constantly improving and adding new features. Have a suggestion? We'd love to hear from you.
+                    </p>
+                    <div class="flex justify-center gap-4">
+                        <a href="#" class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-secondary text-white flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="w-12 h-12 rounded-full bg-pink-500 text-white flex items-center justify-center hover:scale-110 transition-transform">
+                            <i class="fab fa-linkedin-in text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- End Main Content -->
+
+    <!-- Start Footer -->
+    <footer class="w-full py-8 text-center opacity-60 text-sm border-t border-border mt-auto z-10 relative">
+        <p>&copy; 2025 Resume & CV Builder. All rights reserved.</p>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Start Scripts -->
+    <script src="../js/theme.js"></script>
+    <script src="../js/animations.js"></script>
+    <!-- End Scripts -->
+</body>
+<!-- End Body Section -->
+</html>
